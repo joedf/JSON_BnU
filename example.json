@@ -1,0 +1,28 @@
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "null": null,
+  "number": 123,
+  "object": {
+    "name": "table",
+    "type": "furniture",
+    "properties": {
+      "solid": true,
+      "pos": {
+        "x": 23,
+        "y": 4,
+        "z": 42
+      },
+      "size": {
+        "width": 230,
+        "heigth": 80,
+        "unit": "cm"
+      }
+    }
+  },
+  "string": "Hello World"
+}
