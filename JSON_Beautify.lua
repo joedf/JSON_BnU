@@ -78,7 +78,7 @@ function JSON_Beautify(JSON,gap)
 
 				_s = ""
 				k = k + 1
-				for x = 1, (k)+1 do
+				for x = 1, k do
 					_s = _s .. indent
 				end
 
@@ -88,7 +88,7 @@ function JSON_Beautify(JSON,gap)
 
 				_s = ""
 				k = k - 1
-				for x = 1, (k)+1 do
+				for x = 1, k do
 					_s = _s .. indent
 				end
 
@@ -97,7 +97,7 @@ function JSON_Beautify(JSON,gap)
 			elseif ( (ch==",") ) then
 
 				_s = ""
-				for x = 1, (k)+1 do
+				for x = 1, k do
 					_s = _s .. indent
 				end
 
