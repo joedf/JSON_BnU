@@ -75,33 +75,15 @@ function JSON_Beautify(JSON,gap)
 		ch = string.sub(JSON,c,c)
 		if (not in_str) then
 			if ( (ch=="{") or (ch=="[") ) then
-
-				_s = ""
 				k = k + 1
-				for x = 1, k do
-					_s = _s .. indent
-				end
-
-				_JSON = _JSON .. ch .. nl .. _s
+				_JSON = _JSON .. ch .. nl .. indent:rep(k)
 				goto JSON_Beautify_continue
 			elseif ( (ch=="}") or (ch=="]") ) then
-
-				_s = ""
 				k = k - 1
-				for x = 1, k do
-					_s = _s .. indent
-				end
-
-				_JSON = _JSON .. nl .. _s .. ch
+				_JSON = _JSON .. nl .. indent:rep(k) .. ch
 				goto JSON_Beautify_continue
 			elseif ( (ch==",") ) then
-
-				_s = ""
-				for x = 1, k do
-					_s = _s .. indent
-				end
-
-				_JSON = _JSON .. ch .. nl .. _s
+				_JSON = _JSON .. ch .. nl .. indent:rep(k)
 				goto JSON_Beautify_continue
 			end
 		end
