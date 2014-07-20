@@ -1,10 +1,8 @@
 ﻿/*
- * JSON_Beautify.cs
- * by Joe DF
- * Date: 2014-05-07
- * Time: 19:08
- * 
- */
+* JSON_Beautify.cs
+* by Joe DF
+* 
+*/
 using System.IO;
 using System.Text;
 using System;
@@ -15,38 +13,38 @@ namespace JSON_BnU
 	/* Example
 	class Program
 	{
-	    static void Main(string[] args)
-	    {
-	        string raw = File.ReadAllText("example.json");
-	        Console.WriteLine(JSON.Beautify(raw,"4"));
-	        Console.ReadKey();
-	    }
+		static void Main(string[] args)
+		{
+			string raw = File.ReadAllText("example.json");
+			Console.WriteLine(JSON.Beautify(raw,"4"));
+			Console.ReadKey();
+		}
 	}
 	*/
 
 	public class JSON
 	{
 		
-	    public static string Uglify(string JSON) {
+		public static string Uglify(string JSON) {
 			JSON = JSON.Trim();
 			int len = JSON.Length;
 			if (len==0)
 				return "";
-	        StringBuilder j = new StringBuilder(JSON);
-	        j.Replace(System.Environment.NewLine, string.Empty);
-	        j.Replace("\n", string.Empty);
+			StringBuilder j = new StringBuilder(JSON);
+			j.Replace(System.Environment.NewLine, string.Empty);
+			j.Replace("\n", string.Empty);
 			j.Replace("\r", string.Empty);
 			j.Replace("\t", string.Empty);
 			j.Replace("\f", string.Empty);
 			j.Replace("\b", string.Empty);
 			JSON = j.ToString();
-	
+			
 			string _JSON = string.Empty;
 			bool in_str = false;
 			int c;
 			char ch;
 			char l_char = '\0';
-	
+			
 			for(c = 0; c < len; c++) {
 				ch = JSON[c]; 
 				if ( (!in_str) && (ch==' ') )
@@ -58,7 +56,7 @@ namespace JSON_BnU
 			}
 			return _JSON;
 		}
-	
+		
 		public static string Beautify(string JSON, string gap) {
 			//fork of http://pastebin.com/xB0fG9py
 			JSON = Uglify(JSON);
@@ -66,8 +64,7 @@ namespace JSON_BnU
 			string indent = string.Empty;
 			
 			int _gap = 0;
-			if ( int.TryParse(gap, out _gap) == true)
-			{
+			if ( int.TryParse(gap, out _gap) == true) {
 				int i=0;
 				while (i < _gap) {
 					indent += " ";
@@ -97,7 +94,7 @@ namespace JSON_BnU
 						++k;						
 						for (x = 1; x < (k)+1; x++)
 							_s += indent;
-					
+						
 						_JSON += ch.ToString() + nl + _s;
 						continue;
 					}
@@ -107,7 +104,7 @@ namespace JSON_BnU
 						--k;						
 						for (x = 1; x < (k)+1; x++)
 							_s += indent;
-					
+						
 						_JSON += nl + _s + ch.ToString();
 						continue;
 					}
@@ -116,7 +113,7 @@ namespace JSON_BnU
 						_s = string.Empty;					
 						for (x = 1; x < (k)+1; x++)
 							_s += indent;
-					
+						
 						_JSON += ch.ToString() + nl + _s;
 						continue;
 					}
