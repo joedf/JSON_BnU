@@ -4,6 +4,7 @@
     2,
     3
   ],
+  "escapechar" : "\\",
   "boolean": true,
   "null": null,
   "number": 123,
