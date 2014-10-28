@@ -12,7 +12,7 @@
 
 function JSON_Uglify(JSON)
 	JSON = string.gsub(JSON,"%s$","") --trim spaces
-	JSON = string.gsub(JSON,"\\\\","\1") --watchout for '\\\\', convert to '\1'
+	JSON = string.gsub(JSON,"\\\\","\1") --watchout for escape sequence '\\', convert to '\1'
 
 	len = string.len(JSON)
 	if (len==0) then
@@ -38,14 +38,14 @@ function JSON_Uglify(JSON)
 		_JSON = _JSON .. ch
 		::JSON_Uglify_continue::
 	end
-	_JSON = string.gsub(_JSON,"\1","\\\\") --convert '\1' back to '\\\\'
+	_JSON = string.gsub(_JSON,"\1","\\\\") --convert '\1' back to '\\'
 	return _JSON
 end
 
 function JSON_Beautify(JSON,gap)
 	--fork of http://pastebin.com/xB0fG9py
 	JSON = JSON_Uglify(JSON)
-	JSON = string.gsub(JSON,"\\\\","\1") --watchout for '\\\\', convert to '\1'
+	JSON = string.gsub(JSON,"\\\\","\1") --watchout for escape sequence '\\', convert to '\1'
 
 	indent = ""
 
@@ -97,7 +97,7 @@ function JSON_Beautify(JSON,gap)
 		_JSON = _JSON .. ch
 		::JSON_Beautify_continue::
 	end
-	_JSON = string.gsub(_JSON,"\1","\\\\") --convert '\1' back to '\\\\'
+	_JSON = string.gsub(_JSON,"\1","\\\\") --convert '\1' back to '\\'
 	return _JSON
 end
 

@@ -37,7 +37,7 @@ namespace JSON_BnU
 			j.Replace("\t", string.Empty);
 			j.Replace("\f", string.Empty);
 			j.Replace("\b", string.Empty);
-			j.Replace("\\\\", "\1");  // watchout for '\\\\', convert to '\1'
+			j.Replace("\\\\", "\1");  // watchout for escape sequence '\\', convert to '\1'
 			JSON = j.ToString();
 			
 			string _JSON = string.Empty;
@@ -55,14 +55,14 @@ namespace JSON_BnU
 				l_char = ch;
 				_JSON += ch.ToString();
 			}
-			_JSON = _JSON.Replace("\1", "\\\\");  // convert '\1' back to '\\\\'
+			_JSON = _JSON.Replace("\1", "\\\\");  // convert '\1' back to '\\'
 			return _JSON;
 		}
 		
 		public static string Beautify(string JSON, string gap) {
 			//fork of http://pastebin.com/xB0fG9py
 			JSON = Uglify(JSON);
-			JSON = JSON.Replace("\\\\", "\1");  // watchout for '\\\\', convert to '\1'
+			JSON = JSON.Replace("\\\\", "\1");  // watchout for escape sequence '\\', convert to '\1'
 			
 			string indent = string.Empty;
 			
@@ -126,7 +126,7 @@ namespace JSON_BnU
 				l_char = ch;
 				_JSON += ch.ToString();
 			}
-			_JSON = _JSON.Replace("\1", "\\\\");  // convert '\1' back to '\\\\'
+			_JSON = _JSON.Replace("\1", "\\\\");  // convert '\1' back to '\\'
 			return _JSON;
 		}
 		
